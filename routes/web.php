@@ -42,9 +42,12 @@ Route::post('/items/new','ItemsController@create')->middleware('auth','verified'
 
 Route::get('/users', 'UserController@index')->middleware('auth','verified');
 
-Route::get('/users/{id}/delete', 'UserController@deleteConf')->middleware('auth','verified');
-Route::delete('/users/{id}/delete', 'UserController@delete')->middleware('auth','verified');
+Route::get('/users/{id}/delete', 'UserController@deleteConf')->name('delete_get')->middleware('auth','verified');
+Route::delete('/users/{id}/delete', 'UserController@delete')->name('delete_delete')->middleware('auth','verified');
 
+// 画像アップロード
+Route::get('users/{id}/image', 'ImageUploadController@index')->name('image_get')->middleware('auth','verified');
+Route::post('users/{id}/image', 'ImageUploadController@upload')->name('image_post')->middleware('auth', 'verified');
 
 /*************************/
 /*AUTH *******************/
