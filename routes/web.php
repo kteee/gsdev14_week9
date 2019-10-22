@@ -42,7 +42,8 @@ Route::post('/items/new','ItemsController@create')->middleware('auth','verified'
 
 Route::get('/users', 'UserController@index')->middleware('auth','verified');
 
-Route::delete('/users', 'UserController@delete')->middleware('auth','verified');
+Route::get('/users/{id}/delete', 'UserController@deleteConf')->middleware('auth','verified');
+Route::delete('/users/{id}/delete', 'UserController@delete')->middleware('auth','verified');
 
 
 /*************************/
